@@ -14,9 +14,9 @@ export default {
   },
   methods: {
     accessDb: function() {
-        axios.post('./PHP/api.php').then(response => {
-        console.log(response.data.area);
-        console.log(response.data.num);
+        axios.post('https://www2.yoslab.net/~nishimura/geotour/PHP/api.php').then(response => {
+        console.log(response.data.tour_name);
+        console.log(response.data.group_name);
       }).catch(error => {
         // エラーを受け取る
         console.log(error);
