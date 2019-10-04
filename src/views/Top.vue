@@ -1,10 +1,11 @@
 <template>
   <div id="top">
-      topPage!
+      <button v-on:click="accessDb()">心クリック！</button>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'top',
   data () {
@@ -12,15 +13,14 @@ export default {
     }
   },
   methods: {
-    goVotePage: function() {
-      setTimeout(() => {
-          this.$router.push({
-          name: 'vote',
-          params: {
-            routerPeopleNum: this.peopleNum,
-          }
-        })
-      }, 300);
+    accessDb: function() {
+        axios.post('./PHP/api.php').then(response => {
+        console.log(response.data.area);
+        console.log(response.data.num);
+      }).catch(error => {
+        // エラーを受け取る
+        console.log(error);
+      });
     }
   }
 }
